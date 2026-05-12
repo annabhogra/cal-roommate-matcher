@@ -32,4 +32,4 @@ DATABASE_URL=...   # optional, defaults to SQLite
 
 ## Matching algorithm
 
-Scores each pair of users across weighted features — sleep schedule (3×), cleanliness (2×), noise tolerance (2×), guest/smoking compatibility, neighborhood, and budget overlap. Returns a 0–100% compatibility score.
+Scores each pair of users across weighted features: sleep schedule (3×), cleanliness (2×), noise tolerance (2×), guest/smoking compatibility, neighborhood, and budget overlap. Returns a 0–100% compatibility score.
