@@ -1,0 +1,96 @@
+{% extends "base.html" %}
+{% block title %}Edit profile — Cal Roommate Matcher{% endblock %}
+{% block content %}
+
+<div class="row justify-content-center">
+    <div class="col-md-7">
+        <h2 class="fw-bold mb-1">Your profile</h2>
+        <p class="text-muted mb-4">This is what other students see when they find you as a match.</p>
+
+        <form method="POST">
+            <h5 class="fw-semibold mt-2 mb-3">About you</h5>
+            <div class="mb-3">
+                <label class="form-label">Bio <span class="text-muted">(optional)</span></label>
+                <textarea name="bio" class="form-control" rows="3" placeholder="Anything you want potential roommates to know...">{{ user.bio or '' }}</textarea>
+            </div>
+
+            <h5 class="fw-semibold mt-4 mb-3">Living preferences</h5>
+            <div class="row g-3 mb-3">
+                <div class="col-sm-6">
+                    <label class="form-label">Sleep schedule</label>
+                    <select name="sleep_schedule" class="form-select">
+                        <option value="">Not sure</option>
+                        <option value="early" {% if user.sleep_schedule == 'early' %}selected{% endif %}>Early bird (before 10pm)</option>
+                        <option value="normal" {% if user.sleep_schedule == 'normal' %}selected{% endif %}>Normal (10pm–midnight)</option>
+                        <option value="late" {% if user.sleep_schedule == 'late' %}selected{% endif %}>Night owl (after midnight)</option>
+                    </select>
+                </div>
+                <div class="col-sm-6">
+                    <label class="form-label">Preferred neighborhood</label>
+                    <select name="neighborhood" class="form-select">
+                        <option value="">No preference</option>
+                        {% for n in ['Southside', 'Northside', 'Downtown Berkeley', 'Elmwood', 'Rockridge', 'Telegraph Ave', 'West Berkeley'] %}
+                            <option value="{{ n }}" {% if user.neighborhood == n %}selected{% endif %}>{{ n }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Cleanliness — <span id="clean-val">{{ user.cleanliness or 3 }}</span>/5</label>
+                <input type="range" name="cleanliness" class="form-range" min="1" max="5" value="{{ user.cleanliness or 3 }}"
+                    oninput="document.getElementById('clean-val').textContent = this.value">
+                <div class="d-flex justify-content-between text-muted small"><span>Pretty relaxed</span><span>Very tidy</span></div>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Noise tolerance — <span id="noise-val">{{ user.noise_tolerance or 3 }}</span>/5</label>
+                <input type="range" name="noise_tolerance" class="form-range" min="1" max="5" value="{{ user.noise_tolerance or 3 }}"
+                    oninput="document.getElementById('noise-val').textContent = this.value">
+                <div class="d-flex justify-content-between text-muted small"><span>Need quiet</span><span>Noise is fine</span></div>
+            </div>
+
+            <div class="row g-3 mb-3">
+                <div class="col-sm-6">
+                    <label class="form-label">Guests</label>
+                    <select name="guests_ok" class="form-select">
+                        <option value="yes" {% if user.guests_ok %}selected{% endif %}>Guests are fine</option>
+                        <option value="no" {% if not user.guests_ok %}selected{% endif %}>Prefer no guests</option>
+                    </select>
+                </div>
+                <div class="col-sm-6">
+                    <label class="form-label">Smoking</label>
+                    <select name="smoking_ok" class="form-select">
+                        <option value="no" {% if not user.smoking_ok %}selected{% endif %}>No smoking</option>
+                        <option value="yes" {% if user.smoking_ok %}selected{% endif %}>Smoking is ok</option>
+                    </select>
+                </div>
+            </div>
+
+            <h5 class="fw-semibold mt-4 mb-3">Housing details</h5>
+            <div class="row g-3 mb-4">
+                <div class="col-sm-4">
+                    <label class="form-label">Move-in</label>
+                    <select name="move_in" class="form-select">
+                        <option value="">Flexible</option>
+                        {% for s in ['Spring 2025', 'Summer 2025', 'Fall 2025', 'Spring 2026', 'Fall 2026'] %}
+                            <option value="{{ s }}" {% if user.move_in == s %}selected{% endif %}>{{ s }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="col-sm-4">
+                    <label class="form-label">Budget min ($/mo)</label>
+                    <input type="number" name="budget_min" class="form-control" placeholder="e.g. 900" value="{{ user.budget_min or '' }}">
+                </div>
+                <div class="col-sm-4">
+                    <label class="form-label">Budget max ($/mo)</label>
+                    <input type="number" name="budget_max" class="form-control" placeholder="e.g. 1400" value="{{ user.budget_max or '' }}">
+                </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary px-4">Save profile</button>
+        </form>
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,85 @@
+{% extends "base.html" %}
+{% block title %}{{ target.name }} — Cal Roommate Matcher{% endblock %}
+{% block content %}
+
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <a href="/matches" class="text-muted small">&larr; Back to matches</a>
+        <h2 class="fw-bold mt-3 mb-0">{{ target.name }}</h2>
+        <p class="text-muted mb-4">{{ target.year }}{% if target.major %} · {{ target.major }}{% endif %}</p>
+
+        {% if target.bio %}
+            <p class="mb-4">{{ target.bio }}</p>
+        {% endif %}
+
+        <div class="row g-3 mb-4">
+            {% if target.neighborhood %}
+            <div class="col-6">
+                <div class="pref-row">
+                    <span class="text-muted small">Neighborhood</span>
+                    <span>{{ target.neighborhood }}</span>
+                </div>
+            </div>
+            {% endif %}
+            {% if target.sleep_schedule %}
+            <div class="col-6">
+                <div class="pref-row">
+                    <span class="text-muted small">Sleep schedule</span>
+                    <span>{{ {'early': 'Early bird', 'normal': 'Normal', 'late': 'Night owl'}.get(target.sleep_schedule, target.sleep_schedule) }}</span>
+                </div>
+            </div>
+            {% endif %}
+            {% if target.cleanliness %}
+            <div class="col-6">
+                <div class="pref-row">
+                    <span class="text-muted small">Cleanliness</span>
+                    <span>{{ target.cleanliness }}/5</span>
+                </div>
+            </div>
+            {% endif %}
+            {% if target.noise_tolerance %}
+            <div class="col-6">
+                <div class="pref-row">
+                    <span class="text-muted small">Noise tolerance</span>
+                    <span>{{ target.noise_tolerance }}/5</span>
+                </div>
+            </div>
+            {% endif %}
+            <div class="col-6">
+                <div class="pref-row">
+                    <span class="text-muted small">Guests</span>
+                    <span>{{ 'OK' if target.guests_ok else 'Prefer not' }}</span>
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="pref-row">
+                    <span class="text-muted small">Smoking</span>
+                    <span>{{ 'OK' if target.smoking_ok else 'No' }}</span>
+                </div>
+            </div>
+            {% if target.budget_min and target.budget_max %}
+            <div class="col-6">
+                <div class="pref-row">
+                    <span class="text-muted small">Budget</span>
+                    <span>${{ target.budget_min }}–${{ target.budget_max }}/mo</span>
+                </div>
+            </div>
+            {% endif %}
+            {% if target.move_in %}
+            <div class="col-6">
+                <div class="pref-row">
+                    <span class="text-muted small">Move-in</span>
+                    <span>{{ target.move_in }}</span>
+                </div>
+            </div>
+            {% endif %}
+        </div>
+
+        <div class="alert alert-light border">
+            <strong>Want to connect?</strong> Reach out at
+            <a href="mailto:{{ target.email }}">{{ target.email }}</a>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

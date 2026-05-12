@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% block title %}Your matches — Cal Roommate Matcher{% endblock %}
+{% block content %}
+
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h2 class="fw-bold mb-0">Your matches</h2>
+    {% if not user.profile_complete %}
+        <a href="/profile/edit" class="btn btn-warning btn-sm">Complete your profile to improve matches</a>
+    {% endif %}
+</div>
+
+{% if matches %}
+    <div class="row g-3">
+        {% for person, score in matches %}
+        <div class="col-md-6 col-lg-4">
+            <a href="/profile/{{ person.id }}" class="card match-card text-decoration-none h-100">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between align-items-start mb-2">
+                        <div>
+                            <h5 class="card-title mb-0 fw-semibold text-dark">{{ person.name }}</h5>
+                            <small class="text-muted">{{ person.year }}{% if person.major %} · {{ person.major }}{% endif %}</small>
+                        </div>
+                        <div class="score-badge {% if score >= 70 %}score-high{% elif score >= 40 %}score-mid{% else %}score-low{% endif %}">
+                            {{ score }}%
+                        </div>
+                    </div>
+
+                    {% if person.neighborhood %}
+                        <p class="text-muted small mb-1">📍 {{ person.neighborhood }}</p>
+                    {% endif %}
+                    {% if person.budget_min and person.budget_max %}
+                        <p class="text-muted small mb-1">💰 ${{ person.budget_min }}–${{ person.budget_max }}/mo</p>
+                    {% endif %}
+                    {% if person.bio %}
+                        <p class="text-muted small mt-2 mb-0 bio-preview">{{ person.bio }}</p>
+                    {% endif %}
+                </div>
+            </a>
+        </div>
+        {% endfor %}
+    </div>
+{% else %}
+    <div class="text-center text-muted py-5">
+        <p>No other students have signed up yet — check back soon.</p>
+        <a href="/profile/edit" class="btn btn-outline-primary btn-sm">Review your profile</a>
+    </div>
+{% endif %}
+
+{% endblock %}

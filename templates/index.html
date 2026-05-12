@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="hero text-center py-5">
+    <h1 class="fw-bold mb-3">Find your Berkeley roommate</h1>
+    <p class="text-muted mb-4" style="max-width: 480px; margin: auto;">
+        Match with students based on sleep schedule, budget, neighborhood, and living habits.
+        No more cold DMs in the housing Instagram group.
+    </p>
+    <a href="/register" class="btn btn-primary px-4 me-2">Get started</a>
+    <a href="/login" class="btn btn-outline-secondary px-4">Log in</a>
+</div>
+
+<div class="row mt-5 g-4 text-center">
+    <div class="col-md-4">
+        <div class="feature-card p-4">
+            <div class="feature-icon mb-3">🏠</div>
+            <h5 class="fw-semibold">Compatibility matching</h5>
+            <p class="text-muted small">We score matches based on sleep schedule, cleanliness, noise preferences, and budget overlap.</p>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="feature-card p-4">
+            <div class="feature-icon mb-3">🐻</div>
+            <h5 class="fw-semibold">Berkeley only</h5>
+            <p class="text-muted small">Verified @berkeley.edu accounts only. Every person on this platform is a Cal student.</p>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="feature-card p-4">
+            <div class="feature-icon mb-3">📍</div>
+            <h5 class="fw-semibold">Neighborhood filter</h5>
+            <p class="text-muted small">Prioritize matches near Southside, Northside, Downtown, or wherever you're looking.</p>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

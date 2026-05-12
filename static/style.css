@@ -1,0 +1,89 @@
+:root {
+    --berkeley-blue: #003262;
+    --california-gold: #FDB515;
+}
+
+body {
+    background-color: #f8f9fa;
+    color: #1a1a1a;
+}
+
+.navbar {
+    background-color: var(--berkeley-blue) !important;
+}
+
+.btn-primary {
+    background-color: var(--berkeley-blue);
+    border-color: var(--berkeley-blue);
+}
+
+.btn-primary:hover {
+    background-color: #00254a;
+    border-color: #00254a;
+}
+
+.hero {
+    padding-top: 60px;
+    padding-bottom: 60px;
+}
+
+.feature-card {
+    background: white;
+    border-radius: 10px;
+    height: 100%;
+}
+
+.feature-icon {
+    font-size: 2rem;
+}
+
+.match-card {
+    background: white;
+    border: 1px solid #e0e0e0;
+    border-radius: 10px;
+    transition: box-shadow 0.15s ease, border-color 0.15s ease;
+}
+
+.match-card:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    border-color: #bbb;
+}
+
+.score-badge {
+    font-weight: 600;
+    font-size: 0.9rem;
+    padding: 2px 10px;
+    border-radius: 20px;
+}
+
+.score-high {
+    background-color: #d4edda;
+    color: #155724;
+}
+
+.score-mid {
+    background-color: #fff3cd;
+    color: #856404;
+}
+
+.score-low {
+    background-color: #f8f9fa;
+    color: #666;
+}
+
+.bio-preview {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.pref-row {
+    background: white;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 10px 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
