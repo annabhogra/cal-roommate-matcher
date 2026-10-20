@@ -1,7 +1,6 @@
 # Cal Roommate Matcher
 
-*Currently offline, available on request* 
-Roommate matching platform for Berkeley students. Sign up with your @berkeley.edu email, fill out your living preferences, and get matched with compatible students based on sleep schedule, cleanliness, noise tolerance, budget, and neighborhood.
+Roommate matching platform for Berkeley students, used by 400+ students during the [2025–26] housing season. Students sign up with their @berkeley.edu email, fill out their living preferences, and get matched with compatible roommates based on sleep schedule, cleanliness, noise tolerance, budget, and neighborhood. The live site is currently offline; a demo is available on request.
 
 
 ## Stack
